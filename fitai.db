@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "user-1771486821442-ddri9cx5b",
+      "phone": "13800138000",
+      "email": "",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "name": "测试用户",
+      "profile": null,
+      "training_plan": null,
+      "diet_plan": null,
+      "created_at": "2026-02-19T07:40:21.443Z",
+      "last_login": "2026-02-19T07:40:29.265Z",
+      "login_count": 1
+    },
+    {
+      "id": "user-1771486871593-ocsuxcpa1",
+      "phone": "13424373638",
+      "email": "yk565628110@163.com",
+      "password": "b376fb0da889996ddd7e87271c39beab69b7a32c842c52a4b95a607a09479511",
+      "name": "问下部文东",
+      "profile": null,
+      "training_plan": null,
+      "diet_plan": null,
+      "created_at": "2026-02-19T07:41:11.593Z",
+      "last_login": "2026-02-19T07:49:24.855Z",
+      "login_count": 1
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin-001",
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "name": "系统管理员",
+      "created_at": "2026-02-19T07:33:57.925Z"
+    }
+  ],
+  "userProgress": []
+}
