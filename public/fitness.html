@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitAI - 智能健身教练</title>
+    <link rel="stylesheet" href="css/fitness.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1>💪 FitAI 智能健身教练</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" onclick="showPage('home')">首页</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('profile')">身体档案</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('food')">食物识别</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('plan')">训练计划</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('gym')">健身房推荐</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('supplements')">补剂推荐</a></li>
+                </ul>
+                <div class="user-menu" id="userMenu">
+                    <div class="user-avatar" id="userAvatar" onclick="toggleUserDropdown()">
+                        <span id="avatarIcon">👤</span>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="#" onclick="showLoginModal()">登录 / 注册</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <h2>开启你的智能健身之旅</h2>
+                    <p>AI驱动的个性化健身方案，让你的健身目标触手可及</p>
+                    <button class="btn btn-primary" onclick="showPage('profile')">开始评估</button>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <h2>核心功能</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="showPage('profile')">
+                            <div class="feature-icon">📊</div>
+                            <h3>身体档案</h3>
+                            <p>上传身材照片和体检报告，AI智能分析身体状况</p>
+                        </div>
+                        <div class="feature-card" onclick="showPage('food')">
+                            <div class="feature-icon">🍎</div>
+                            <h3>食物识别</h3>
+                            <p>拍照识别食物，精准计算卡路里摄入</p>
+                        </div>
+                        <div class="feature-card" onclick="showPage('plan')">
+                            <div class="feature-icon">🏋️</div>
+                            <h3>智能计划</h3>
+                            <p>根据目标和现状定制训练、饮食、睡眠方案</p>
+                        </div>
+                        <div class="feature-card" onclick="showPage('gym')">
+                            <div class="feature-icon">🏢</div>
+                            <h3>健身房推荐</h3>
+                            <p>基于位置和性价比推荐最适合的健身房</p>
+                        </div>
+                        <div class="feature-card" onclick="showPage('supplements')">
+                            <div class="feature-icon">💊</div>
+                            <h3>补剂推荐</h3>
+                            <p>根据训练计划推荐科学补剂搭配</p>
+                        </div>
+                        <div class="feature-card" onclick="showPage('results')">
+                            <div class="feature-icon">📈</div>
+                            <h3>效果预测</h3>
+                            <p>科学预测训练效果，让目标可视化</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">训练动作库</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">食物数据库</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">用户满意度</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">AI</div>
+                            <div class="stat-label">智能分析</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile-page" class="page">
+            <div class="container">
+                <h2>🤖 AI身体评估</h2>
+                <div class="ai-assessment-container">
+                    <div class="ai-assessment-intro" id="assessmentIntro">
+                        <div class="intro-icon">💪</div>
+                        <h3>欢迎使用AI身体评估</h3>
+                        <p>让我通过对话了解你的身体状况和健身目标，为你制定个性化方案</p>
+                        <div class="intro-features">
+                            <div class="feature">
+                                <span class="feature-icon">📊</span>
+                                <span>智能分析身体数据</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🎯</span>
+                                <span>定制专属健身计划</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🍎</span>
+                                <span>科学饮食建议</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-large" onclick="startAIAssessment()">
+                            开始AI评估
+                        </button>
+                    </div>
+                    
+                    <div class="ai-assessment-chat" id="assessmentChat" style="display: none;">
+                        <div class="assessment-header">
+                            <div class="assessment-info">
+                                <span class="assessment-icon">🤖</span>
+                                <span>AI健身助手</span>
+                            </div>
+                            <button class="btn-restart" onclick="restartAssessment()">重新开始</button>
+                        </div>
+                        <div class="assessment-messages" id="assessmentMessages"></div>
+                        <div class="assessment-input-area">
+                            <input type="text" id="assessmentInput" placeholder="请输入你的回答..." onkeypress="handleAssessmentKeyPress(event)">
+                            <button class="btn-send" onclick="sendAssessmentMessage()">发送</button>
+                        </div>
+                        <div class="assessment-progress" id="assessmentProgress">
+                            <div class="progress-dots">
+                                <span class="dot active" data-step="1">基本信息</span>
+                                <span class="dot" data-step="2">身体状况</span>
+                                <span class="dot" data-step="3">健身目标</span>
+                                <span class="dot" data-step="4">生活习惯</span>
+                                <span class="dot" data-step="5">完成</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="assessment-result" id="assessmentResult" style="display: none;">
+                        <div class="result-header">
+                            <span class="result-icon">✅</span>
+                            <h3>评估完成！</h3>
+                        </div>
+                        <div class="result-summary" id="resultSummary"></div>
+                        <div class="result-actions">
+                            <button class="btn btn-secondary" onclick="restartAssessment()">重新评估</button>
+                            <button class="btn btn-primary" onclick="generatePlanFromAssessment()">生成健身方案</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: none;">
+                    <input type="text" id="userName">
+                    <input type="number" id="userAge">
+                    <select id="userGender"><option value="male">男</option><option value="female">女</option></select>
+                    <input type="number" id="userHeight">
+                    <input type="number" id="userWeight">
+                    <input type="number" id="userWaist">
+                    <input type="number" id="userBodyFat">
+                    <input type="number" id="userMuscle">
+                    <input type="number" id="userBmr">
+                    <select id="userGoal"><option value="lose_weight">减脂</option><option value="build_muscle">增肌</option><option value="improve_health">改善健康</option></select>
+                    <input type="number" id="targetWeight">
+                    <input type="number" id="targetBodyFat">
+                    <input type="number" id="targetWeeks">
+                    <select id="exerciseFrequency"><option value="0">0</option><option value="1-2">1-2</option><option value="3-4">3-4</option><option value="5-6">5-6</option><option value="7">7</option></select>
+                    <select id="exercisePreference"><option value="home">居家</option><option value="gym">健身房</option><option value="outdoor">户外</option><option value="mixed">混合</option></select>
+                    <input type="number" id="sleepHours">
+                    <select id="workType"><option value="sedentary">久坐</option><option value="standing">站立</option><option value="active">体力</option><option value="freelance">自由</option></select>
+                </div>
+            </div>
+        </section>
+
+        <section id="food-page" class="page">
+            <div class="container">
+                <h2>🍎 食物卡路里识别</h2>
+                <div class="food-analyzer">
+                    <div class="food-upload-section">
+                        <div class="upload-box large">
+                            <div class="upload-area" onclick="document.getElementById('foodPhoto').click()">
+                                <input type="file" id="foodPhoto" accept="image/*" hidden onchange="handleFoodImage(this)">
+                                <div class="upload-placeholder" id="foodPreview">
+                                    <span class="upload-icon">🍽️</span>
+                                    <span>点击上传食物照片</span>
+                                    <span class="upload-hint">支持多种食物识别</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-description">
+                            <div class="form-group">
+                                <label>食物描述 (可选)</label>
+                                <textarea id="foodDescription" rows="3" placeholder="描述你吃的食物，如：一份宫保鸡丁饭，半碗米饭..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="analyzeFood()">识别卡路里</button>
+                        </div>
+                    </div>
+
+                    <div class="food-result" id="foodResult" style="display: none;">
+                        <h3>识别结果</h3>
+                        <div class="food-result-grid" id="foodResultGrid"></div>
+                        <div class="food-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">总热量</span>
+                                <span class="summary-value" id="totalCalories">0 kcal</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">蛋白质</span>
+                                <span class="summary-value" id="totalProtein">0g</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">碳水</span>
+                                <span class="summary-value" id="totalCarbs">0g</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">脂肪</span>
+                                <span class="summary-value" id="totalFat">0g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="daily-summary">
+                        <h3>今日摄入</h3>
+                        <div class="daily-progress">
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span>热量</span>
+                                    <span id="calorieProgress">0 / 2000 kcal</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="calorieBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span>蛋白质</span>
+                                    <span id="proteinProgress">0 / 150g</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill protein" id="proteinBar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="food-log" id="foodLog">
+                            <h4>饮食记录</h4>
+                            <div id="foodLogList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan-page" class="page">
+            <div class="container">
+                <h2>🏋️ 训练计划</h2>
+                
+                <div class="today-todo" id="todayTodo">
+                    <div class="today-header">
+                        <h3>📋 今日任务</h3>
+                        <div class="header-actions">
+                            <span class="today-date" id="todayDate"></span>
+                            <button class="ai-assistant-btn" onclick="openAIAssistant()">
+                                <span>🤖</span> AI健身助手
+                            </button>
+                        </div>
+                    </div>
+                    <div class="todo-list" id="todoList"></div>
+                    <div class="today-progress">
+                        <div class="progress-text">
+                            <span>今日进度</span>
+                            <span id="todoProgress">0/0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="todoProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-overview" id="planOverview">
+                    <div class="overview-cards">
+                        <div class="overview-card">
+                            <div class="card-icon">🎯</div>
+                            <div class="card-content">
+                                <h4>训练目标</h4>
+                                <p id="displayGoal">减脂瘦身</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="card-icon">📅</div>
+                            <div class="card-content">
+                                <h4>计划周期</h4>
+                                <p id="displayDuration">12周</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="card-icon">🔥</div>
+                            <div class="card-content">
+                                <h4>每周训练</h4>
+                                <p id="displayFrequency">4-5次</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="card-icon">⏱️</div>
+                            <div class="card-content">
+                                <h4>预计效果</h4>
+                                <p id="displayEffect">-5kg</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-tabs">
+                    <button class="tab-btn active" onclick="showPlanTab('training')">训练计划</button>
+                    <button class="tab-btn" onclick="showPlanTab('diet')">饮食计划</button>
+                    <button class="tab-btn" onclick="showPlanTab('sleep')">睡眠建议</button>
+                    <button class="tab-btn" onclick="showPlanTab('results')">预期效果</button>
+                </div>
+
+                <div class="plan-content">
+                    <div id="training-tab" class="plan-tab active">
+                        <div class="week-selector">
+                            <button class="week-btn" onclick="changeWeek(-1)">◀ 上一周</button>
+                            <span id="currentWeek">第1周</span>
+                            <button class="week-btn" onclick="changeWeek(1)">下一周 ▶</button>
+                        </div>
+                        <div class="training-days" id="trainingDays"></div>
+                    </div>
+
+                    <div id="diet-tab" class="plan-tab">
+                        <div class="diet-plan" id="dietPlan"></div>
+                    </div>
+
+                    <div id="sleep-tab" class="plan-tab">
+                        <div class="sleep-plan" id="sleepPlan"></div>
+                    </div>
+
+                    <div id="results-tab" class="plan-tab">
+                        <div class="results-prediction" id="resultsPrediction"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gym-page" class="page">
+            <div class="container">
+                <h2>🏢 健身房推荐</h2>
+                
+                <div class="gym-filters">
+                    <div class="form-group">
+                        <label>你的位置</label>
+                        <input type="text" id="userLocation" placeholder="请输入城市/区域">
+                    </div>
+                    <div class="form-group">
+                        <label>预算范围</label>
+                        <select id="budgetRange">
+                            <option value="">不限</option>
+                            <option value="low">500元以下/月</option>
+                            <option value="medium">500-1000元/月</option>
+                            <option value="high">1000-2000元/月</option>
+                            <option value="premium">2000元以上/月</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>偏好设施</label>
+                        <select id="gymFeatures">
+                            <option value="">不限</option>
+                            <option value="pool">游泳池</option>
+                            <option value="sauna">桑拿房</option>
+                            <option value="group">团课</option>
+                            <option value="pt">私教</option>
+                            <option value="24h">24小时营业</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="searchGyms()">搜索健身房</button>
+                </div>
+
+                <div class="gym-list" id="gymList">
+                    <div class="gym-card">
+                        <div class="gym-image">🏢</div>
+                        <div class="gym-info">
+                            <h3>示例健身房 A</h3>
+                            <p class="gym-address">距离你 0.5km</p>
+                            <p class="gym-description">设施齐全，器械丰富，适合各种训练需求</p>
+                            <div class="gym-features">
+                                <span class="feature-tag">🏋️ 器械区</span>
+                                <span class="feature-tag">🏊 游泳池</span>
+                                <span class="feature-tag">🧘 团课</span>
+                            </div>
+                            <div class="gym-price">
+                                <span class="price">¥799/月</span>
+                                <span class="rating">⭐ 4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="supplements-page" class="page">
+            <div class="container">
+                <h2>💊 补剂推荐</h2>
+                
+                <div class="supplement-intro">
+                    <p>根据你的训练计划和身体状况，AI为你推荐以下补剂搭配</p>
+                </div>
+
+                <div class="supplement-categories">
+                    <button class="category-btn active" onclick="filterSupplements('all')">全部</button>
+                    <button class="category-btn" onclick="filterSupplements('protein')">蛋白粉</button>
+                    <button class="category-btn" onclick="filterSupplements('preworkout')">氮泵</button>
+                    <button class="category-btn" onclick="filterSupplements('fatburner')">减脂</button>
+                    <button class="category-btn" onclick="filterSupplements('vitamins')">维生素</button>
+                </div>
+
+                <div class="supplement-list" id="supplementList"></div>
+
+                <div class="supplement-guide">
+                    <h3>💡 补剂使用指南</h3>
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <h4>蛋白粉</h4>
+                            <p>训练后30分钟内补充，帮助肌肉恢复和生长</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>氮泵</h4>
+                            <p>训练前20-30分钟服用，提升训练专注度和泵感</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>减脂补剂</h4>
+                            <p>建议早餐或运动前服用，提高代谢</p>
+                        </div>
+                        <div class="guide-item">
+                            <h4>维生素D</h4>
+                            <p>随餐服用，促进钙吸收，支持免疫系统</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercise-detail-page" class="page">
+            <div class="container">
+                <button class="btn btn-secondary" onclick="showPage('plan')">← 返回训练计划</button>
+                <div class="exercise-detail" id="exerciseDetail"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FitAI 智能健身教练. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="ai-chat-modal" id="aiChatModal">
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <div class="ai-chat-title">
+                    <span class="ai-avatar">🤖</span>
+                    <div>
+                        <h3>AI健身助手</h3>
+                        <span class="ai-status">在线</span>
+                    </div>
+                </div>
+                <span class="close-chat" onclick="closeAIAssistant()">×</span>
+            </div>
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>你好！我是你的AI健身助手 🤖</p>
+                        <p>我可以帮你解答：</p>
+                        <ul>
+                            <li>训练动作要领和技巧</li>
+                            <li>饮食营养建议</li>
+                            <li>健身计划调整</li>
+                            <li>健身知识问答</li>
+                        </ul>
+                        <p>有什么健身问题尽管问我吧！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-questions">
+                <button onclick="askQuickQuestion('今天训练动作有哪些？')">今天练什么？</button>
+                <button onclick="askQuickQuestion('增肌饮食怎么吃？')">增肌怎么吃？</button>
+                <button onclick="askQuickQuestion('训练后拉伸动作')">训练后拉伸</button>
+                <button onclick="askQuickQuestion('减脂怎么快速见效？')">减脂建议</button>
+            </div>
+            <div class="ai-chat-input">
+                <input type="text" id="aiChatInput" placeholder="输入你的健身问题..." onkeypress="handleChatKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/fitness.js"></script>
+</body>
+</html>
